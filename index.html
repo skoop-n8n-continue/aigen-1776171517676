@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AuraFit | Precision Longevity</title>
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        carbon: '#10181f',
+                        mint: '#00b7af',
+                        graphite: '#1f2937',
+                        clay: '#6a7071',
+                        ice: '#f3f4f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="styles.css?v=a1b2c3">
+</head>
+<body class="bg-carbon text-ice min-h-screen flex flex-col font-sans overflow-x-hidden">
+
+    <!-- Splash Screen -->
+    <div id="splash" class="fixed inset-0 z-50 bg-carbon flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="relative">
+            <div class="w-24 h-24 border-4 border-mint rounded-full animate-ping opacity-25"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i data-lucide="zap" class="w-12 h-12 text-mint fill-mint"></i>
+            </div>
+        </div>
+        <h1 class="mt-8 text-3xl font-bold tracking-tighter uppercase">AuraFit</h1>
+        <p class="text-clay text-sm tracking-widest uppercase mt-2">Precision Longevity</p>
+    </div>
+
+    <!-- Main App Container -->
+    <main id="app" class="flex-grow pb-24 hidden">
+
+        <!-- Dashboard View -->
+        <section id="view-dashboard" class="view p-6 space-y-8">
+            <header class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-clay text-xs font-bold uppercase tracking-widest">Good Morning,</h2>
+                    <h1 class="text-2xl font-bold">Alex Johnson</h1>
+                </div>
+                <div class="w-12 h-12 rounded-full border-2 border-mint overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=00b7af&color=fff" alt="Profile">
+                </div>
+            </header>
+
+            <!-- Readiness Score Card -->
+            <div class="relative overflow-hidden rounded-3xl bg-graphite p-6 border border-white/5 shadow-2xl">
+                <div class="absolute -right-12 -top-12 w-48 h-48 bg-mint/10 rounded-full blur-3xl"></div>
+                <div class="relative z-10 flex justify-between items-end">
+                    <div>
+                        <p class="text-clay text-xs font-bold uppercase tracking-widest mb-1">Daily Readiness</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold text-mint">88</span>
+                            <span class="text-clay font-medium">/100</span>
+                        </div>
+                        <p class="mt-4 text-sm text-ice/80 max-w-[200px]">Optimal recovery detected. Peak performance window open.</p>
+                    </div>
+                    <div class="w-24 h-24">
+                        <canvas id="readinessChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-graphite/50 p-4 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-2 mb-2 text-mint">
+                        <i data-lucide="flame" class="w-4 h-4"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clay">Active Burn</span>
+                    </div>
+                    <p class="text-xl font-bold">1,240 <span class="text-xs text-clay">kcal</span></p>
+                </div>
+                <div class="bg-graphite/50 p-4 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-2 mb-2 text-mint">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-clay">Duration</span>
+                    </div>
+                    <p class="text-xl font-bold">45 <span class="text-xs text-clay">min</span></p>
+                </div>
+            </div>
+
+            <!-- Training Categories -->
+            <div>
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold">Start Training</h3>
+                    <button class="text-mint text-sm font-medium">See All</button>
+                </div>
+                <div class="space-y-4">
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="strength">
+                        <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon-1776171944445.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Strength">
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold">Strength & Hypertrophy</h4>
+                            <p class="text-xs text-clay">Build raw power and lean muscle</p>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
+                    </div>
+
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="cardio">
+                        <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon-1776171963292.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Cardio">
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold">V02 Max Endurance</h4>
+                            <p class="text-xs text-clay">Elevate cardiovascular threshold</p>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
+                    </div>
+
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="recovery">
+                        <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon-1776171990034.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Recovery">
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-bold">Restorative Mobility</h4>
+                            <p class="text-xs text-clay">Deep tissue release and flow</p>
+                        </div>
+                        <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workouts View -->
+        <section id="view-workouts" class="view p-6 space-y-8 hidden">
+            <header>
+                <button class="back-btn mb-4 text-mint flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Back to Dash</span>
+                </button>
+                <h1 id="category-title" class="text-3xl font-bold">Workouts</h1>
+                <p id="category-desc" class="text-clay mt-1">Select a program to begin your session.</p>
+            </header>
+
+            <div id="workouts-list" class="grid grid-cols-1 gap-4">
+                <!-- Injected by JS -->
+            </div>
+        </section>
+
+        <!-- Active Workout View -->
+        <section id="view-active-workout" class="view fixed inset-0 z-40 bg-carbon p-6 flex flex-col hidden">
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h2 id="active-exercise-name" class="text-2xl font-bold">Squats</h2>
+                    <p id="active-workout-name" class="text-clay text-sm">Leg Day Power</p>
+                </div>
+                <button id="close-workout" class="w-10 h-10 rounded-full bg-graphite flex items-center justify-center">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="flex-grow flex flex-col items-center justify-center text-center">
+                <div class="relative mb-12">
+                    <div class="w-64 h-64 border-8 border-graphite rounded-full flex flex-col items-center justify-center">
+                        <span id="rep-counter" class="text-8xl font-black text-mint">0</span>
+                        <span class="text-clay uppercase font-bold tracking-widest mt-2">Reps</span>
+                    </div>
+                    <!-- Rep Progress Ring (SVG) -->
+                    <svg class="absolute inset-0 w-full h-full -rotate-90">
+                        <circle cx="128" cy="128" r="120" stroke="currentColor" stroke-width="8" fill="transparent" class="text-mint stroke-mint transition-all duration-300" style="stroke-dasharray: 754; stroke-dashoffset: 754;" id="progress-circle"/>
+                    </svg>
+                </div>
+
+                <div class="space-y-2 mb-12">
+                    <p class="text-xl font-bold">Set <span id="current-set">1</span> of 4</p>
+                    <p class="text-clay text-sm">Target: 12 Reps @ 185 lbs</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 w-full">
+                    <button id="add-rep" class="h-20 bg-mint text-carbon rounded-2xl text-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                        <i data-lucide="plus" class="w-6 h-6"></i> Add Rep
+                    </button>
+                    <button id="finish-set" class="h-20 bg-graphite text-ice rounded-2xl text-xl font-bold active:scale-95 transition-transform">
+                        Finish Set
+                    </button>
+                </div>
+            </div>
+
+            <!-- Rest Timer Overlay -->
+            <div id="rest-timer" class="absolute inset-0 bg-carbon/95 flex flex-col items-center justify-center p-6 hidden">
+                <p class="text-mint text-sm font-bold uppercase tracking-[0.2em] mb-4">Recovery in Progress</p>
+                <span id="timer-display" class="text-8xl font-black mb-8">01:30</span>
+                <button id="skip-rest" class="px-8 py-3 bg-white/10 rounded-full text-sm font-bold uppercase tracking-widest border border-white/10">Skip Rest</button>
+            </div>
+        </section>
+
+        <!-- Stats View -->
+        <section id="view-stats" class="view p-6 space-y-8 hidden">
+            <h1 class="text-3xl font-bold">Performance</h1>
+
+            <div class="bg-graphite rounded-3xl p-6 border border-white/5">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-clay mb-6">Weekly Volume</h3>
+                <div class="h-48">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold">Personal Records</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-4 bg-graphite/50 rounded-2xl">
+                        <span class="text-clay font-medium">Back Squat</span>
+                        <span class="font-bold">315 lbs</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-graphite/50 rounded-2xl">
+                        <span class="text-clay font-medium">Deadlift</span>
+                        <span class="font-bold">405 lbs</span>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-graphite/50 rounded-2xl">
+                        <span class="text-clay font-medium">Bench Press</span>
+                        <span class="font-bold">225 lbs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile View -->
+        <section id="view-profile" class="view p-6 space-y-8 hidden">
+            <h1 class="text-3xl font-bold">Bio-Digital Identity</h1>
+
+            <div class="flex items-center gap-4 bg-graphite p-6 rounded-3xl border border-white/5">
+                <div class="w-20 h-20 rounded-full border-4 border-mint overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=00b7af&color=fff" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold">Alex Johnson</h2>
+                    <p class="text-clay text-sm">Pro Elite Member</p>
+                    <div class="mt-2 inline-flex items-center px-2 py-0.5 rounded bg-mint/20 text-mint text-[10px] font-bold uppercase tracking-wider">Longevity Tier: S</div>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-clay ml-2">App Settings</h3>
+                <div class="bg-graphite rounded-2xl overflow-hidden border border-white/5">
+                    <div class="flex justify-between items-center p-4 border-b border-white/5">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="bell" class="w-5 h-5 text-mint"></i>
+                            <span class="font-medium">Notifications</span>
+                        </div>
+                        <div class="w-12 h-6 bg-mint rounded-full relative">
+                            <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center p-4 border-b border-white/5">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="bluetooth" class="w-5 h-5 text-mint"></i>
+                            <span class="font-medium">Smart Equipment Sync</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-clay"></i>
+                    </div>
+                    <div class="flex justify-between items-center p-4">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-mint"></i>
+                            <span class="font-medium">Privacy & Security</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-clay"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button class="w-full py-4 bg-white/5 rounded-2xl text-red-500 font-bold border border-white/5">Sign Out</button>
+        </section>
+
+    </main>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed bottom-0 left-0 right-0 bg-carbon/80 backdrop-blur-xl border-t border-white/5 p-4 hidden">
+        <div class="flex justify-around items-center max-w-lg mx-auto">
+            <button class="nav-item group flex flex-col items-center gap-1 active" data-view="dashboard">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
+                    <i data-lucide="layout-grid" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Dash</span>
+            </button>
+            <button class="nav-item group flex flex-col items-center gap-1" data-view="workouts">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
+                    <i data-lucide="dumbbell" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Train</span>
+            </button>
+            <button class="nav-item group flex flex-col items-center gap-1" data-view="stats">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
+                    <i data-lucide="line-chart" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Stats</span>
+            </button>
+            <button class="nav-item group flex flex-col items-center gap-1" data-view="profile">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
+                    <i data-lucide="user" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Me</span>
+            </button>
+        </div>
+    </nav>
+
+    <script src="app.js?v=a1b2c3"></script>
+</body>
+</html>
