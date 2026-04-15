@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
 :root {
-    --mint: #00b7af;
+    --aura: #ff3b30;
     --carbon: #10181f;
     --graphite: #1f2937;
     --clay: #6a7071;
@@ -13,14 +13,15 @@
 body {
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    background-color: var(--carbon);
 }
 
 /* Glassmorphism Effect */
 .glass {
     background: rgba(31, 41, 55, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Tactile Buttons */
@@ -33,7 +34,7 @@ button:active {
 }
 
 .category-card {
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .category-card:active {
@@ -42,7 +43,7 @@ button:active {
 
 /* Nav Animation */
 .nav-item.active .nav-icon-bg {
-    box-shadow: 0 0 20px rgba(0, 183, 175, 0.2);
+    box-shadow: 0 0 25px rgba(255, 59, 48, 0.3);
 }
 
 /* Scroll Hide */
@@ -53,29 +54,34 @@ button:active {
 
 /* Rep Progress Circle Animation */
 #progress-circle {
-    transition: stroke-dashoffset 0.5s ease-out;
+    transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.5));
 }
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .view {
-    animation: fadeIn 0.4s ease-out forwards;
+    animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Splash Animation */
-@keyframes pulse-ring {
-    0% { transform: scale(0.8); opacity: 0.5; }
-    50% { transform: scale(1.2); opacity: 0.1; }
-    100% { transform: scale(0.8); opacity: 0.5; }
+@keyframes pulse-glow {
+    0% { transform: scale(0.9); opacity: 0.4; filter: blur(2px); }
+    50% { transform: scale(1.1); opacity: 0.8; filter: blur(0px); }
+    100% { transform: scale(0.9); opacity: 0.4; filter: blur(2px); }
+}
+
+#splash .zap-icon {
+    animation: pulse-glow 2s infinite ease-in-out;
 }
 
 /* Active Workout Layout */
 #view-active-workout {
-    background: radial-gradient(circle at center, #1a262f 0%, #10181f 100%);
+    background: radial-gradient(circle at center, #1e1215 0%, #10181f 100%);
 }
 
 /* Card Hover Effects */
@@ -84,8 +90,15 @@ button:active {
 }
 
 .workout-item:hover {
-    border-color: rgba(0, 183, 175, 0.3);
-    background: rgba(31, 41, 55, 0.9);
+    border-color: rgba(255, 59, 48, 0.4);
+    background: rgba(31, 41, 55, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Glow Text */
+.text-glow {
+    text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
 }
 
 /* Responsive Overrides */
@@ -95,6 +108,7 @@ button:active {
         margin: 0 auto;
         border-left: 1px solid rgba(255, 255, 255, 0.05);
         border-right: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 100px rgba(0,0,0,0.5);
     }
     #navbar {
         max-width: 480px;

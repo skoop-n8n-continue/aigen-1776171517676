@@ -18,7 +18,7 @@
                 extend: {
                     colors: {
                         carbon: '#10181f',
-                        mint: '#00b7af',
+                        aura: '#ff3b30',
                         graphite: '#1f2937',
                         clay: '#6a7071',
                         ice: '#f3f4f6'
@@ -37,19 +37,19 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=a1b2c3">
+    <link rel="stylesheet" href="styles.css?v=r3d_v1">
 </head>
 <body class="bg-carbon text-ice min-h-screen flex flex-col font-sans overflow-x-hidden">
 
     <!-- Splash Screen -->
     <div id="splash" class="fixed inset-0 z-50 bg-carbon flex flex-col items-center justify-center transition-opacity duration-500">
         <div class="relative">
-            <div class="w-24 h-24 border-4 border-mint rounded-full animate-ping opacity-25"></div>
+            <div class="w-24 h-24 border-4 border-aura rounded-full animate-ping opacity-25"></div>
             <div class="absolute inset-0 flex items-center justify-center">
-                <i data-lucide="zap" class="w-12 h-12 text-mint fill-mint"></i>
+                <i data-lucide="zap" class="zap-icon w-12 h-12 text-aura fill-aura"></i>
             </div>
         </div>
-        <h1 class="mt-8 text-3xl font-bold tracking-tighter uppercase">AuraFit</h1>
+        <h1 class="mt-8 text-3xl font-bold tracking-tighter uppercase text-glow">AuraFit</h1>
         <p class="text-clay text-sm tracking-widest uppercase mt-2">Precision Longevity</p>
     </div>
 
@@ -63,19 +63,19 @@
                     <h2 class="text-clay text-xs font-bold uppercase tracking-widest">Good Morning,</h2>
                     <h1 class="text-2xl font-bold">Alex Johnson</h1>
                 </div>
-                <div class="w-12 h-12 rounded-full border-2 border-mint overflow-hidden">
-                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=00b7af&color=fff" alt="Profile">
+                <div class="w-12 h-12 rounded-full border-2 border-aura overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=ff3b30&color=fff" alt="Profile">
                 </div>
             </header>
 
             <!-- Readiness Score Card -->
             <div class="relative overflow-hidden rounded-3xl bg-graphite p-6 border border-white/5 shadow-2xl">
-                <div class="absolute -right-12 -top-12 w-48 h-48 bg-mint/10 rounded-full blur-3xl"></div>
+                <div class="absolute -right-12 -top-12 w-48 h-48 bg-aura/10 rounded-full blur-3xl"></div>
                 <div class="relative z-10 flex justify-between items-end">
                     <div>
                         <p class="text-clay text-xs font-bold uppercase tracking-widest mb-1">Daily Readiness</p>
                         <div class="flex items-baseline gap-2">
-                            <span class="text-5xl font-bold text-mint">88</span>
+                            <span class="text-5xl font-bold text-aura text-glow">88</span>
                             <span class="text-clay font-medium">/100</span>
                         </div>
                         <p class="mt-4 text-sm text-ice/80 max-w-[200px]">Optimal recovery detected. Peak performance window open.</p>
@@ -89,14 +89,14 @@
             <!-- Quick Stats Grid -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="bg-graphite/50 p-4 rounded-2xl border border-white/5">
-                    <div class="flex items-center gap-2 mb-2 text-mint">
+                    <div class="flex items-center gap-2 mb-2 text-aura">
                         <i data-lucide="flame" class="w-4 h-4"></i>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-clay">Active Burn</span>
                     </div>
                     <p class="text-xl font-bold">1,240 <span class="text-xs text-clay">kcal</span></p>
                 </div>
                 <div class="bg-graphite/50 p-4 rounded-2xl border border-white/5">
-                    <div class="flex items-center gap-2 mb-2 text-mint">
+                    <div class="flex items-center gap-2 mb-2 text-aura">
                         <i data-lucide="clock" class="w-4 h-4"></i>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-clay">Duration</span>
                     </div>
@@ -108,12 +108,12 @@
             <div>
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-bold">Start Training</h3>
-                    <button class="text-mint text-sm font-medium">See All</button>
+                    <button class="text-aura text-sm font-medium">See All</button>
                 </div>
                 <div class="space-y-4">
-                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="strength">
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-aura/10 transition-colors" data-category="strength">
                         <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
-                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon-1776171944445.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Strength">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon_red-1776255494557.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Strength">
                         </div>
                         <div class="flex-grow">
                             <h4 class="font-bold">Strength & Hypertrophy</h4>
@@ -122,9 +122,9 @@
                         <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
                     </div>
 
-                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="cardio">
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-aura/10 transition-colors" data-category="cardio">
                         <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
-                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon-1776171963292.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Cardio">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon_red-1776255515309.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Cardio">
                         </div>
                         <div class="flex-grow">
                             <h4 class="font-bold">V02 Max Endurance</h4>
@@ -133,9 +133,9 @@
                         <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
                     </div>
 
-                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-mint/5 transition-colors" data-category="recovery">
+                    <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-aura/10 transition-colors" data-category="recovery">
                         <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
-                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon-1776171990034.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Recovery">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon_red-1776255537348.png" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="Recovery">
                         </div>
                         <div class="flex-grow">
                             <h4 class="font-bold">Restorative Mobility</h4>
@@ -150,7 +150,7 @@
         <!-- Workouts View -->
         <section id="view-workouts" class="view p-6 space-y-8 hidden">
             <header>
-                <button class="back-btn mb-4 text-mint flex items-center gap-2">
+                <button class="back-btn mb-4 text-aura flex items-center gap-2">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span>Back to Dash</span>
                 </button>
@@ -178,12 +178,12 @@
             <div class="flex-grow flex flex-col items-center justify-center text-center">
                 <div class="relative mb-12">
                     <div class="w-64 h-64 border-8 border-graphite rounded-full flex flex-col items-center justify-center">
-                        <span id="rep-counter" class="text-8xl font-black text-mint">0</span>
+                        <span id="rep-counter" class="text-8xl font-black text-aura text-glow">0</span>
                         <span class="text-clay uppercase font-bold tracking-widest mt-2">Reps</span>
                     </div>
                     <!-- Rep Progress Ring (SVG) -->
                     <svg class="absolute inset-0 w-full h-full -rotate-90">
-                        <circle cx="128" cy="128" r="120" stroke="currentColor" stroke-width="8" fill="transparent" class="text-mint stroke-mint transition-all duration-300" style="stroke-dasharray: 754; stroke-dashoffset: 754;" id="progress-circle"/>
+                        <circle cx="128" cy="128" r="120" stroke="currentColor" stroke-width="8" fill="transparent" class="text-aura stroke-aura transition-all duration-300" style="stroke-dasharray: 754; stroke-dashoffset: 754;" id="progress-circle"/>
                     </svg>
                 </div>
 
@@ -193,7 +193,7 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 w-full">
-                    <button id="add-rep" class="h-20 bg-mint text-carbon rounded-2xl text-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    <button id="add-rep" class="h-20 bg-aura text-carbon rounded-2xl text-xl font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
                         <i data-lucide="plus" class="w-6 h-6"></i> Add Rep
                     </button>
                     <button id="finish-set" class="h-20 bg-graphite text-ice rounded-2xl text-xl font-bold active:scale-95 transition-transform">
@@ -204,7 +204,7 @@
 
             <!-- Rest Timer Overlay -->
             <div id="rest-timer" class="absolute inset-0 bg-carbon/95 flex flex-col items-center justify-center p-6 hidden">
-                <p class="text-mint text-sm font-bold uppercase tracking-[0.2em] mb-4">Recovery in Progress</p>
+                <p class="text-aura text-sm font-bold uppercase tracking-[0.2em] mb-4">Recovery in Progress</p>
                 <span id="timer-display" class="text-8xl font-black mb-8">01:30</span>
                 <button id="skip-rest" class="px-8 py-3 bg-white/10 rounded-full text-sm font-bold uppercase tracking-widest border border-white/10">Skip Rest</button>
             </div>
@@ -245,13 +245,13 @@
             <h1 class="text-3xl font-bold">Bio-Digital Identity</h1>
 
             <div class="flex items-center gap-4 bg-graphite p-6 rounded-3xl border border-white/5">
-                <div class="w-20 h-20 rounded-full border-4 border-mint overflow-hidden">
-                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=00b7af&color=fff" class="w-full h-full object-cover">
+                <div class="w-20 h-20 rounded-full border-4 border-aura overflow-hidden">
+                    <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=ff3b30&color=fff" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h2 class="text-xl font-bold">Alex Johnson</h2>
                     <p class="text-clay text-sm">Pro Elite Member</p>
-                    <div class="mt-2 inline-flex items-center px-2 py-0.5 rounded bg-mint/20 text-mint text-[10px] font-bold uppercase tracking-wider">Longevity Tier: S</div>
+                    <div class="mt-2 inline-flex items-center px-2 py-0.5 rounded bg-aura/20 text-aura text-[10px] font-bold uppercase tracking-wider">Longevity Tier: S</div>
                 </div>
             </div>
 
@@ -260,23 +260,23 @@
                 <div class="bg-graphite rounded-2xl overflow-hidden border border-white/5">
                     <div class="flex justify-between items-center p-4 border-b border-white/5">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="bell" class="w-5 h-5 text-mint"></i>
+                            <i data-lucide="bell" class="w-5 h-5 text-aura"></i>
                             <span class="font-medium">Notifications</span>
                         </div>
-                        <div class="w-12 h-6 bg-mint rounded-full relative">
+                        <div class="w-12 h-6 bg-aura rounded-full relative">
                             <div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
                         </div>
                     </div>
                     <div class="flex justify-between items-center p-4 border-b border-white/5">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="bluetooth" class="w-5 h-5 text-mint"></i>
+                            <i data-lucide="bluetooth" class="w-5 h-5 text-aura"></i>
                             <span class="font-medium">Smart Equipment Sync</span>
                         </div>
                         <i data-lucide="chevron-right" class="w-5 h-5 text-clay"></i>
                     </div>
                     <div class="flex justify-between items-center p-4">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-mint"></i>
+                            <i data-lucide="shield-check" class="w-5 h-5 text-aura"></i>
                             <span class="font-medium">Privacy & Security</span>
                         </div>
                         <i data-lucide="chevron-right" class="w-5 h-5 text-clay"></i>
@@ -293,33 +293,33 @@
     <nav id="navbar" class="fixed bottom-0 left-0 right-0 bg-carbon/80 backdrop-blur-xl border-t border-white/5 p-4 hidden">
         <div class="flex justify-around items-center max-w-lg mx-auto">
             <button class="nav-item group flex flex-col items-center gap-1 active" data-view="dashboard">
-                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
-                    <i data-lucide="layout-grid" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="layout-grid" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Dash</span>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Dash</span>
             </button>
             <button class="nav-item group flex flex-col items-center gap-1" data-view="workouts">
-                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
-                    <i data-lucide="dumbbell" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="dumbbell" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Train</span>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Train</span>
             </button>
             <button class="nav-item group flex flex-col items-center gap-1" data-view="stats">
-                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
-                    <i data-lucide="line-chart" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="line-chart" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Stats</span>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Stats</span>
             </button>
             <button class="nav-item group flex flex-col items-center gap-1" data-view="profile">
-                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-mint/10 transition-colors">
-                    <i data-lucide="user" class="w-5 h-5 text-clay group-[.active]:text-mint"></i>
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="user" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
                 </div>
-                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-mint">Me</span>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Me</span>
             </button>
         </div>
     </nav>
 
-    <script src="app.js?v=a1b2c3"></script>
+    <script src="app.js?v=r3d_v1"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {

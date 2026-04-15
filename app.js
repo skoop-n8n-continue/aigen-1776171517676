@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="flex items-center gap-1"><i data-lucide="award" class="w-3 h-3"></i> ${p.level}</span>
                     </div>
                 </div>
-                <div class="w-10 h-10 rounded-full bg-mint/10 flex items-center justify-center text-mint">
-                    <i data-lucide="play" class="w-5 h-5 fill-mint"></i>
+                <div class="w-10 h-10 rounded-full bg-aura/10 flex items-center justify-center text-aura">
+                    <i data-lucide="play" class="w-5 h-5 fill-aura"></i>
                 </div>
             </div>
         `).join('');
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 datasets: [{
                     data: [88, 12],
-                    backgroundColor: ['#00b7af', '#1f2937'],
+                    backgroundColor: ['#ff3b30', '#1f2937'],
                     borderWidth: 0,
                     circumference: 180,
                     rotation: 270,
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Volume (lbs)',
                     data: state.stats.weeklyVolume,
-                    backgroundColor: '#00b7af',
+                    backgroundColor: '#ff3b30',
                     borderRadius: 8,
                 }]
             },
