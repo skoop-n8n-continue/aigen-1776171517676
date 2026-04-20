@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // App State
     const state = {
         currentView: 'dashboard',
+        activeCategory: null,
         activeWorkout: null,
         currentExerciseIndex: 0,
         currentSet: 1,
@@ -94,6 +95,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const restTimer = document.getElementById('rest-timer');
     const timerDisplay = document.getElementById('timer-display');
 
+    // Modal Elements
+    const modalContainer = document.getElementById('modal-container');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const modalConfirm = document.getElementById('modal-confirm');
+    const modalCancel = document.getElementById('modal-cancel');
+    const modalIcon = document.getElementById('modal-icon');
+
+    // --- Utilities ---
+
+    const vibrate = (ms = 50) => {
+        if (navigator.vibrate) navigator.vibrate(ms);
+    };
+
+    const showModal = ({ title, message, icon = 'info', confirmText = 'Confirm', cancelText = 'Cancel', onConfirm, onCancel }) => {
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        modalConfirm.textContent = confirmText;
+        modalCancel.textContent = cancelText;
+        modalIcon.setAttribute('data-lucide', icon);
+        lucide.createIcons();
+
+        if (cancelText === null) {
+            modalCancel.classList.add('hidden');
+        } else {
+            modalCancel.classList.remove('hidden');
+        }
+
+        modalContainer.classList.remove('hidden');
+
+        const handleConfirm = () => {
+            modalContainer.classList.add('hidden');
+            cleanup();
+            if (onConfirm) onConfirm();
+        };
+
+        const handleCancel = () => {
+            modalContainer.classList.add('hidden');
+            cleanup();
+            if (onCancel) onCancel();
+        };
+
+        const cleanup = () => {
+            modalConfirm.removeEventListener('click', handleConfirm);
+            modalCancel.removeEventListener('click', handleCancel);
+        };
+
+        modalConfirm.addEventListener('click', handleConfirm);
+        modalCancel.addEventListener('click', handleCancel);
+    };
+
     // --- Navigation Logic ---
 
     const showView = (viewId) => {
@@ -102,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetView) {
             targetView.classList.remove('hidden');
             state.currentView = viewId;
+            window.scrollTo(0, 0); // Reset scroll on view change
         }
 
         // Update Nav UI
@@ -115,14 +168,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Special handling for views
         if (viewId === 'stats') initStatsCharts();
+        if (viewId === 'workouts' && !state.activeCategory) renderCategories();
     };
 
     navItems.forEach(item => {
-        item.addEventListener('click', () => showView(item.dataset.view));
+        item.addEventListener('click', () => {
+            vibrate(30);
+            showView(item.dataset.view);
+        });
     });
 
     document.querySelectorAll('.back-btn').forEach(btn => {
-        btn.addEventListener('click', () => showView('dashboard'));
+        btn.addEventListener('click', () => {
+            vibrate(30);
+            if (state.currentView === 'workouts' && state.activeCategory) {
+                renderCategories();
+            } else {
+                showView('dashboard');
+            }
+        });
     });
 
     // --- Splash Logic ---
@@ -133,6 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
             app.classList.remove('hidden');
             navbar.classList.remove('hidden');
             initReadinessChart();
+
+            // Add Promo Click Listener
+            const promoBanner = document.querySelector('[alt="Promo"]')?.closest('.relative');
+            if (promoBanner) {
+                promoBanner.addEventListener('click', () => showView('gym'));
+            }
         }, 500);
     }, 2000);
 
@@ -140,13 +210,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.category-card').forEach(card => {
         card.addEventListener('click', () => {
+            vibrate(30);
             const category = card.dataset.category;
             renderWorkouts(category);
             showView('workouts');
         });
     });
 
+    const renderCategories = () => {
+        state.activeCategory = null;
+        categoryTitle.textContent = "Training";
+        categoryDesc.textContent = "Select a discipline to explore programs.";
+
+        const categories = [
+            { id: 'strength', name: 'Strength & Hypertrophy', desc: 'Build raw power and lean muscle', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon_red-1776255494557.png' },
+            { id: 'cardio', name: 'V02 Max Endurance', desc: 'Elevate cardiovascular threshold', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon_red-1776255515309.png' },
+            { id: 'recovery', name: 'Restorative Mobility', desc: 'Deep tissue release and flow', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon_red-1776255537348.png' }
+        ];
+
+        workoutsList.innerHTML = categories.map(c => `
+            <div class="category-card group flex items-center p-4 bg-graphite rounded-2xl border border-white/5 cursor-pointer hover:bg-aura/10 transition-colors" data-category="${c.id}">
+                <div class="w-16 h-16 rounded-xl bg-carbon p-2 flex items-center justify-center mr-4 overflow-hidden">
+                    <img src="${c.img}" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform" alt="${c.name}">
+                </div>
+                <div class="flex-grow">
+                    <h4 class="font-bold">${c.name}</h4>
+                    <p class="text-xs text-clay">${c.desc}</p>
+                </div>
+                <i data-lucide="chevron-right" class="text-clay w-5 h-5"></i>
+            </div>
+        `).join('');
+
+        lucide.createIcons();
+
+        // Re-attach click listeners to the newly rendered cards
+        workoutsList.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                vibrate(30);
+                const category = card.dataset.category;
+                renderWorkouts(category);
+            });
+        });
+    };
+
     const renderWorkouts = (category) => {
+        state.activeCategory = category;
         const data = workoutData[category];
         categoryTitle.textContent = data.title;
         categoryDesc.textContent = data.desc;
@@ -171,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add Click Events to Workouts
         document.querySelectorAll('.workout-item').forEach(item => {
             item.addEventListener('click', () => {
+                vibrate(50);
                 const programId = item.dataset.id;
                 const category = item.dataset.category;
                 startWorkout(category, programId);
@@ -216,10 +325,11 @@ document.addEventListener('DOMContentLoaded', () => {
         updateProgressCircle();
 
         // Tactile Feedback (Haptic Sim)
-        if (navigator.vibrate) navigator.vibrate(50);
+        vibrate(50);
     });
 
     document.getElementById('finish-set').addEventListener('click', () => {
+        vibrate(70);
         const exercise = state.activeWorkout.exercises[state.currentExerciseIndex];
 
         if (state.currentSet < exercise.sets) {
@@ -263,24 +373,42 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.getElementById('skip-rest').addEventListener('click', () => {
+        vibrate(30);
         state.isResting = false;
     });
 
     document.getElementById('close-workout').addEventListener('click', () => {
-        if (confirm("End session early? Progress will not be saved.")) {
-            activeWorkoutView.classList.add('hidden');
-            navbar.classList.remove('hidden');
-        }
+        vibrate(30);
+        showModal({
+            title: "End Session?",
+            message: "Progress for this workout will not be saved if you exit now.",
+            icon: "alert-triangle",
+            confirmText: "End Session",
+            cancelText: "Continue",
+            onConfirm: () => {
+                activeWorkoutView.classList.add('hidden');
+                navbar.classList.remove('hidden');
+            }
+        });
     });
 
     const completeWorkout = () => {
-        alert("Workout Complete! Excellent work.");
+        vibrate([100, 50, 100]);
         state.stats.completedWorkouts++;
         localStorage.setItem('aurafit_stats', JSON.stringify(state.stats));
 
-        activeWorkoutView.classList.add('hidden');
-        navbar.classList.remove('hidden');
-        showView('dashboard');
+        showModal({
+            title: "Session Complete!",
+            message: "Excellent work, Alex. Your stats have been updated and recovery protocols initiated.",
+            icon: "trophy",
+            confirmText: "Return to Dash",
+            cancelText: null,
+            onConfirm: () => {
+                activeWorkoutView.classList.add('hidden');
+                navbar.classList.remove('hidden');
+                showView('dashboard');
+            }
+        });
     };
 
     // --- Charts Logic ---
@@ -308,8 +436,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const initStatsCharts = () => {
-        const ctx = document.getElementById('volumeChart').getContext('2d');
-        new Chart(ctx, {
+        // Volume Bar Chart
+        const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+        if (window.volumeChartInstance) window.volumeChartInstance.destroy();
+        window.volumeChartInstance = new Chart(volumeCtx, {
             type: 'bar',
             data: {
                 labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
@@ -326,6 +456,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 scales: {
                     y: { display: false },
                     x: { grid: { display: false }, ticks: { color: '#6a7071', font: { size: 10 } } }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // Muscle Focus Radar Chart
+        const focusCtx = document.getElementById('focusChart').getContext('2d');
+        if (window.focusChartInstance) window.focusChartInstance.destroy();
+        window.focusChartInstance = new Chart(focusCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core'],
+                datasets: [{
+                    label: 'Focus',
+                    data: [80, 65, 90, 70, 55, 85],
+                    backgroundColor: 'rgba(255, 59, 48, 0.2)',
+                    borderColor: '#ff3b30',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#ff3b30',
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        pointLabels: { color: '#6a7071', font: { size: 10, weight: 'bold' } },
+                        ticks: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
                 },
                 plugins: { legend: { display: false } }
             }

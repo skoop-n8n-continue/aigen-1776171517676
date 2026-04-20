@@ -52,6 +52,15 @@ button:active {
     height: 0;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 /* Rep Progress Circle Animation */
 #progress-circle {
     transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -99,6 +108,37 @@ button:active {
 /* Glow Text */
 .text-glow {
     text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
+}
+
+/* Horizontal Scroll Fade */
+.scroll-fade-right {
+    position: relative;
+}
+
+.scroll-fade-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--carbon));
+    pointer-events: none;
+}
+
+/* Gym View Specifics */
+.membership-card-gradient {
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(16, 24, 31, 1) 100%);
+}
+
+.promo-badge {
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 59, 48, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
 }
 
 /* Responsive Overrides */

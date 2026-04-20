@@ -37,7 +37,7 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=r3d_v1">
+    <link rel="stylesheet" href="styles.css?v=r3d_v2">
 </head>
 <body class="bg-carbon text-ice min-h-screen flex flex-col font-sans overflow-x-hidden">
 
@@ -83,6 +83,22 @@
                     <div class="w-24 h-24">
                         <canvas id="readinessChart"></canvas>
                     </div>
+                </div>
+            </div>
+
+            <!-- Promo Banner -->
+            <div class="relative h-40 rounded-3xl overflow-hidden border border-aura/20 group cursor-pointer shadow-lg shadow-aura/5">
+                <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fmembership_promo_banner-1776668045538.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Promo">
+                <div class="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <span class="px-2 py-0.5 rounded bg-aura text-carbon text-[10px] font-bold uppercase tracking-wider">Limited Offer</span>
+                    <h3 class="text-xl font-bold mt-1">Unlock Elite Access</h3>
+                    <p class="text-xs text-ice/60">Upgrade now for 20% off annual plan</p>
+                </div>
+                <div class="absolute bottom-4 right-6">
+                    <button class="w-10 h-10 rounded-full bg-aura text-carbon flex items-center justify-center">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
                 </div>
             </div>
 
@@ -214,10 +230,39 @@
         <section id="view-stats" class="view p-6 space-y-8 hidden">
             <h1 class="text-3xl font-bold">Performance</h1>
 
-            <div class="bg-graphite rounded-3xl p-6 border border-white/5">
-                <h3 class="text-sm font-bold uppercase tracking-widest text-clay mb-6">Weekly Volume</h3>
-                <div class="h-48">
-                    <canvas id="volumeChart"></canvas>
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Weekly Volume -->
+                <div class="bg-graphite rounded-3xl p-6 border border-white/5">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-clay mb-6">Weekly Volume (lbs)</h3>
+                    <div class="h-48">
+                        <canvas id="volumeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Muscle Distribution (Radar) -->
+                <div class="bg-graphite rounded-3xl p-6 border border-white/5">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-clay mb-6">Body Focus Index</h3>
+                    <div class="h-64">
+                        <canvas id="focusChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-graphite/40 p-5 rounded-2xl border border-white/5">
+                    <p class="text-clay text-[10px] font-bold uppercase tracking-wider mb-2">Avg Intensity</p>
+                    <p class="text-2xl font-bold text-aura">84%</p>
+                    <div class="mt-2 flex items-center gap-1 text-[10px] text-green-500">
+                        <i data-lucide="trending-up" class="w-3 h-3"></i> +5% vs LW
+                    </div>
+                </div>
+                <div class="bg-graphite/40 p-5 rounded-2xl border border-white/5">
+                    <p class="text-clay text-[10px] font-bold uppercase tracking-wider mb-2">Weekly Streak</p>
+                    <p class="text-2xl font-bold">12 <span class="text-sm text-clay font-normal">days</span></p>
+                    <div class="mt-2 flex items-center gap-1 text-[10px] text-aura">
+                        <i data-lucide="zap" class="w-3 h-3"></i> Top 2% in HQ
+                    </div>
                 </div>
             </div>
 
@@ -255,6 +300,37 @@
                 </div>
             </div>
 
+            <!-- Digital Gym Key -->
+            <div class="bg-carbon rounded-3xl border border-aura/30 p-6 flex flex-col items-center text-center">
+                <p class="text-xs font-bold uppercase tracking-[0.2em] text-aura mb-6">Aura HQ Digital Pass</p>
+                <div class="relative group cursor-pointer">
+                    <div class="absolute inset-0 bg-aura/20 rounded-2xl blur-xl group-hover:bg-aura/40 transition-all"></div>
+                    <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fgym_qr_pass-1776668324684.png" class="relative w-48 h-48 rounded-2xl border border-white/10" alt="QR Pass">
+                </div>
+                <p class="mt-6 text-[10px] text-clay uppercase tracking-widest">Scan at the front desk for biometric entry</p>
+            </div>
+
+            <!-- Achievements -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-clay ml-2">Unlocked Achievements</h3>
+                <div class="scroll-fade-right">
+                    <div class="flex gap-4 overflow-x-auto pb-2 scroll-smooth no-scrollbar">
+                        <div class="flex-shrink-0 w-24 h-24 bg-graphite rounded-2xl border border-white/5 flex flex-col items-center justify-center p-2 text-center">
+                            <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fachievement_badge_streak-1776668349228.png" class="w-10 h-10 mb-2" alt="Flame Badge">
+                            <span class="text-[9px] font-bold uppercase text-aura leading-tight">12 Day Streak</span>
+                        </div>
+                        <div class="flex-shrink-0 w-24 h-24 bg-graphite rounded-2xl border border-white/5 flex flex-col items-center justify-center p-2 text-center grayscale opacity-40">
+                            <i data-lucide="trophy" class="w-8 h-8 text-clay mb-2"></i>
+                            <span class="text-[9px] font-bold uppercase text-clay leading-tight">100k Vol</span>
+                        </div>
+                        <div class="flex-shrink-0 w-24 h-24 bg-graphite rounded-2xl border border-white/5 flex flex-col items-center justify-center p-2 text-center grayscale opacity-40">
+                            <i data-lucide="medal" class="w-8 h-8 text-clay mb-2"></i>
+                            <span class="text-[9px] font-bold uppercase text-clay leading-tight">Elite Tier</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="space-y-2">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-clay ml-2">App Settings</h3>
                 <div class="bg-graphite rounded-2xl overflow-hidden border border-white/5">
@@ -287,7 +363,122 @@
             <button class="w-full py-4 bg-white/5 rounded-2xl text-red-500 font-bold border border-white/5">Sign Out</button>
         </section>
 
+        <!-- Gym Info View -->
+        <section id="view-gym" class="view p-6 space-y-8 hidden">
+            <header>
+                <h1 class="text-3xl font-bold">The Club</h1>
+                <p class="text-clay mt-1">AuraFit Flagship HQ</p>
+            </header>
+
+            <div class="rounded-3xl overflow-hidden border border-white/5 relative h-56 group">
+                <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fgym_interior_futuristic-1776668032659.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt="Gym Interior">
+                <div class="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-6">
+                    <div class="flex items-center gap-2 text-aura">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest text-ice">Downtown District</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location & Contact -->
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-graphite p-6 rounded-3xl border border-white/5 space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-aura/10 flex items-center justify-center shrink-0">
+                            <i data-lucide="navigation" class="w-5 h-5 text-aura"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Location</h4>
+                            <p class="text-sm text-clay mt-1">88 Tech Plaza, Cyber Valley<br>Neo City, NC 90210</p>
+                            <button class="text-aura text-xs font-bold uppercase mt-3 tracking-widest flex items-center gap-1">Get Directions <i data-lucide="external-link" class="w-3 h-3"></i></button>
+                        </div>
+                    </div>
+                    <div class="h-px bg-white/5 w-full"></div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-aura/10 flex items-center justify-center shrink-0">
+                            <i data-lucide="phone" class="w-5 h-5 text-aura"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Contact</h4>
+                            <p class="text-sm text-clay mt-1">+1 (555) AURA-FIT</p>
+                            <p class="text-sm text-clay">hello@aurafit.gym</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operating Hours -->
+            <div class="bg-graphite p-6 rounded-3xl border border-white/5">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-clay mb-6 flex items-center gap-2">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                    Operating Hours
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-ice/80 font-medium">Monday - Friday</span>
+                        <span class="text-aura font-bold">05:00 - 23:00</span>
+                    </div>
+                    <div class="h-px bg-white/5 w-full"></div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-ice/80 font-medium">Saturday</span>
+                        <span class="text-aura font-bold">07:00 - 21:00</span>
+                    </div>
+                    <div class="h-px bg-white/5 w-full"></div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-ice/80 font-medium">Sunday</span>
+                        <span class="text-aura font-bold">08:00 - 18:00</span>
+                    </div>
+                </div>
+                <div class="mt-6 p-3 bg-aura/10 rounded-xl text-center">
+                    <p class="text-[10px] text-aura font-bold uppercase tracking-wider">Holidays: 09:00 - 14:00</p>
+                </div>
+            </div>
+
+            <!-- Membership Promos -->
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold">Exclusive Membership</h3>
+                <div class="space-y-3">
+                    <div class="p-4 bg-gradient-to-br from-graphite to-carbon rounded-2xl border border-aura/30 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold">Founder's Special</h4>
+                            <p class="text-xs text-clay">Limited to first 100 members</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-aura font-bold">$149/mo</p>
+                            <p class="text-[10px] text-clay line-through">$199/mo</p>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-graphite rounded-2xl border border-white/5 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-bold">Student Pass</h4>
+                            <p class="text-xs text-clay">Valid ID required</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-ice font-bold">$89/mo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- Custom Modal -->
+    <div id="modal-container" class="fixed inset-0 z-[100] flex items-center justify-center p-6 hidden">
+        <div id="modal-backdrop" class="absolute inset-0 bg-carbon/90 backdrop-blur-sm"></div>
+        <div class="relative bg-graphite border border-white/10 rounded-3xl p-8 max-w-sm w-full shadow-2xl animate-fadeIn">
+            <div id="modal-icon-container" class="w-16 h-16 bg-aura/10 rounded-2xl flex items-center justify-center text-aura mb-6 mx-auto">
+                <i data-lucide="info" id="modal-icon" class="w-8 h-8"></i>
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold text-center mb-2">Notice</h3>
+            <p id="modal-message" class="text-clay text-center mb-8">This is a system message.</p>
+            <div id="modal-actions" class="flex flex-col gap-3">
+                <button id="modal-confirm" class="w-full py-4 bg-aura text-carbon font-bold rounded-2xl active:scale-95 transition-transform">Confirm</button>
+                <button id="modal-cancel" class="w-full py-4 bg-white/5 text-ice font-bold rounded-2xl active:scale-95 transition-transform">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Navigation Bar -->
     <nav id="navbar" class="fixed bottom-0 left-0 right-0 bg-carbon/80 backdrop-blur-xl border-t border-white/5 p-4 hidden">
@@ -304,6 +495,12 @@
                 </div>
                 <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Train</span>
             </button>
+            <button class="nav-item group flex flex-col items-center gap-1" data-view="gym">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="building-2" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Club</span>
+            </button>
             <button class="nav-item group flex flex-col items-center gap-1" data-view="stats">
                 <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
                     <i data-lucide="line-chart" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
@@ -319,7 +516,7 @@
         </div>
     </nav>
 
-    <script src="app.js?v=r3d_v1"></script>
+    <script src="app.js?v=r3d_v2"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
