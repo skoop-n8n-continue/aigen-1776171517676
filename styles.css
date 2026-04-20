@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
 :root {
-    --aura: #ff3b30;
+    --aura: #007aff;
     --carbon: #10181f;
     --graphite: #1f2937;
     --clay: #6a7071;
@@ -43,7 +43,7 @@ button:active {
 
 /* Nav Animation */
 .nav-item.active .nav-icon-bg {
-    box-shadow: 0 0 25px rgba(255, 59, 48, 0.3);
+    box-shadow: 0 0 25px rgba(0, 122, 255, 0.3);
 }
 
 /* Scroll Hide */
@@ -64,7 +64,7 @@ button:active {
 /* Rep Progress Circle Animation */
 #progress-circle {
     transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.5));
+    filter: drop-shadow(0 0 8px rgba(0, 122, 255, 0.5));
 }
 
 /* Animations */
@@ -90,7 +90,7 @@ button:active {
 
 /* Active Workout Layout */
 #view-active-workout {
-    background: radial-gradient(circle at center, #1e1215 0%, #10181f 100%);
+    background: radial-gradient(circle at center, #121e2a 0%, #10181f 100%);
 }
 
 /* Card Hover Effects */
@@ -99,7 +99,7 @@ button:active {
 }
 
 .workout-item:hover {
-    border-color: rgba(255, 59, 48, 0.4);
+    border-color: rgba(0, 122, 255, 0.4);
     background: rgba(31, 41, 55, 0.95);
     transform: translateY(-2px);
     box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
@@ -107,7 +107,7 @@ button:active {
 
 /* Glow Text */
 .text-glow {
-    text-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
+    text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
 }
 
 /* Horizontal Scroll Fade */
@@ -136,9 +136,9 @@ button:active {
 }
 
 @keyframes pulse-border {
-    0% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 59, 48, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 122, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 122, 255, 0); }
 }
 
 /* Ribbon Scroll Animation */
