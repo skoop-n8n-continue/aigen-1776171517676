@@ -240,9 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
         categoryDesc.textContent = "Select a discipline to explore programs.";
 
         const categories = [
-            { id: 'strength', name: 'Strength & Hypertrophy', desc: 'Build raw power and lean muscle', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon_blue-1776682931044.png' },
-            { id: 'cardio', name: 'V02 Max Endurance', desc: 'Elevate cardiovascular threshold', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon_blue-1776682955476.png' },
-            { id: 'recovery', name: 'Restorative Mobility', desc: 'Deep tissue release and flow', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon_blue-1776682976728.png' }
+            { id: 'strength', name: 'Strength & Hypertrophy', desc: 'Build raw power and lean muscle', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fstrength_icon_noir-1776693228017.png' },
+            { id: 'cardio', name: 'V02 Max Endurance', desc: 'Elevate cardiovascular threshold', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Fcardio_icon_noir-1776693248633.png' },
+            { id: 'recovery', name: 'Restorative Mobility', desc: 'Deep tissue release and flow', img: 'https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Frecovery_icon_noir-1776693274965.png' }
         ];
 
         workoutsList.innerHTML = categories.map(c => `
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 datasets: [{
                     data: [88, 12],
-                    backgroundColor: ['#007aff', '#1f2937'],
+                    backgroundColor: ['#ffffff', '#111111'],
                     borderWidth: 0,
                     circumference: 180,
                     rotation: 270,
@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Volume (lbs)',
                     data: state.stats.weeklyVolume,
-                    backgroundColor: '#007aff',
+                    backgroundColor: '#ffffff',
                     borderRadius: 8,
                 }]
             },
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 maintainAspectRatio: false,
                 scales: {
                     y: { display: false },
-                    x: { grid: { display: false }, ticks: { color: '#6a7071', font: { size: 10 } } }
+                    x: { grid: { display: false }, ticks: { color: '#888888', font: { size: 10 } } }
                 },
                 plugins: { legend: { display: false } }
             }
@@ -488,10 +488,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: [{
                     label: 'Focus',
                     data: [80, 65, 90, 70, 55, 85],
-                    backgroundColor: 'rgba(0, 122, 255, 0.2)',
-                    borderColor: '#007aff',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    borderColor: '#ffffff',
                     borderWidth: 2,
-                    pointBackgroundColor: '#007aff',
+                    pointBackgroundColor: '#ffffff',
                     pointRadius: 3
                 }]
             },
@@ -500,9 +500,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 maintainAspectRatio: false,
                 scales: {
                     r: {
-                        angleLines: { color: 'rgba(255, 255, 255, 0.05)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        pointLabels: { color: '#6a7071', font: { size: 10, weight: 'bold' } },
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: { color: '#888888', font: { size: 10, weight: 'bold' } },
                         ticks: { display: false },
                         suggestedMin: 0,
                         suggestedMax: 100
