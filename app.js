@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // App State
     const state = {
-        currentView: 'dashboard',
+        currentView: 'home',
         activeCategory: null,
         activeWorkout: null,
         currentExerciseIndex: 0,
@@ -157,6 +157,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0); // Reset scroll on view change
         }
 
+        // Desktop Landing Width Toggle
+        if (viewId === 'home') {
+            app.classList.add('landing-active');
+        } else {
+            app.classList.remove('landing-active');
+        }
+
         // Update Nav UI
         navItems.forEach(item => {
             if (item.dataset.view === viewId) {
@@ -196,12 +203,22 @@ document.addEventListener('DOMContentLoaded', () => {
             splash.classList.add('hidden');
             app.classList.remove('hidden');
             navbar.classList.remove('hidden');
+
+            showView('home'); // Show home by default
             initReadinessChart();
 
             // Add Promo Click Listener
             const promoBanner = document.querySelector('[alt="Promo"]')?.closest('.relative');
             if (promoBanner) {
                 promoBanner.addEventListener('click', () => showView('gym'));
+            }
+
+            // View Promos Button
+            const viewPromosBtn = document.getElementById('view-promos-btn');
+            if (viewPromosBtn) {
+                viewPromosBtn.addEventListener('click', () => {
+                    document.getElementById('promo-section').scrollIntoView({ behavior: 'smooth' });
+                });
             }
         }, 500);
     }, 2000);

@@ -141,14 +141,34 @@ button:active {
     100% { box-shadow: 0 0 0 0 rgba(255, 59, 48, 0); }
 }
 
+/* Ribbon Scroll Animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+    display: inline-flex;
+    animation: scroll 20s linear infinite;
+}
+
+.view.hidden .animate-scroll {
+    animation-play-state: paused;
+}
+
 /* Responsive Overrides */
 @media (min-width: 640px) {
-    #app {
+    #app:not(.landing-active) {
         max-width: 480px;
         margin: 0 auto;
         border-left: 1px solid rgba(255, 255, 255, 0.05);
         border-right: 1px solid rgba(255, 255, 255, 0.05);
         box-shadow: 0 0 100px rgba(0,0,0,0.5);
+    }
+    #app.landing-active {
+        max-width: 100%;
+        margin: 0;
+        border: none;
     }
     #navbar {
         max-width: 480px;

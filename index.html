@@ -37,7 +37,7 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="stylesheet" href="styles.css?v=r3d_v2">
+    <link rel="stylesheet" href="styles.css?v=aurav3">
 </head>
 <body class="bg-carbon text-ice min-h-screen flex flex-col font-sans overflow-x-hidden">
 
@@ -55,6 +55,199 @@
 
     <!-- Main App Container -->
     <main id="app" class="flex-grow pb-24 hidden">
+
+        <!-- Home / Landing View -->
+        <section id="view-home" class="view space-y-0">
+            <!-- Hero Section -->
+            <div class="relative h-screen min-h-[600px] flex flex-col justify-end p-8 overflow-hidden">
+                <img src="https://skoop-dev-code-agent.s3.us-east-1.amazonaws.com/skoop-n8n-continue%2Faigen-1776171517676%2Fassets%2Faurafit_hero_2026-1776669172274.png" class="absolute inset-0 w-full h-full object-cover" alt="AuraFit HQ" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-carbon via-carbon/40 to-transparent"></div>
+                <div class="relative z-10 space-y-6 max-w-lg mb-12">
+                    <span class="inline-block px-3 py-1 rounded bg-aura text-carbon text-xs font-bold uppercase tracking-widest">Est. 2026</span>
+                    <h1 class="text-5xl font-black tracking-tighter uppercase leading-none">Redefining<br><span class="text-aura text-glow">Human Limits</span></h1>
+                    <p class="text-ice/80 text-lg">AuraFit is the premier destination for precision longevity, bio-hacking, and elite performance training.</p>
+                    <div class="flex gap-4 pt-4">
+                        <button class="px-8 py-4 bg-aura text-carbon font-bold rounded-2xl active:scale-95 transition-transform shadow-lg shadow-aura/20 nav-item" data-view="dashboard">Enter App</button>
+                        <button id="view-promos-btn" class="px-8 py-4 bg-white/10 backdrop-blur-md text-ice font-bold rounded-2xl border border-white/10 active:scale-95 transition-transform">View Promos</button>
+                    </div>
+                </div>
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+                    <i data-lucide="chevron-down" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <!-- Stats Ribbon -->
+            <div class="bg-aura py-4 overflow-hidden whitespace-nowrap border-y border-white/10">
+                <div class="flex gap-12 animate-scroll items-center">
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> Bio-Digital Tracking</span>
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> 24/7 Access</span>
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> Recovery Labs</span>
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> AI Coaching</span>
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> Elite Community</span>
+                    <!-- Duplicate for infinite effect -->
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> Bio-Digital Tracking</span>
+                    <span class="text-carbon font-black uppercase tracking-tighter text-sm italic flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 fill-carbon"></i> 24/7 Access</span>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="p-8 space-y-12 bg-carbon">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold uppercase tracking-tighter">The <span class="text-aura">Aura</span> Edge</h2>
+                    <p class="text-clay max-w-sm mx-auto">Beyond iron and sweat. We integrate technology into every fiber of your training.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-graphite p-8 rounded-3xl border border-white/5 space-y-4 group hover:border-aura/30 transition-colors">
+                        <div class="w-14 h-14 bg-aura/10 rounded-2xl flex items-center justify-center text-aura mb-4">
+                            <i data-lucide="microscope" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Biometric Analysis</h3>
+                        <p class="text-clay text-sm leading-relaxed">Continuous monitoring of your CNS readiness, VO2 max, and hormonal balance to optimize every rep.</p>
+                    </div>
+                    <div class="bg-graphite p-8 rounded-3xl border border-white/5 space-y-4 group hover:border-aura/30 transition-colors">
+                        <div class="w-14 h-14 bg-aura/10 rounded-2xl flex items-center justify-center text-aura mb-4">
+                            <i data-lucide="snowflake" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Cryo-Recovery Lab</h3>
+                        <p class="text-clay text-sm leading-relaxed">Whole-body cryotherapy, red-light therapy, and hyperbaric chambers to accelerate tissue repair.</p>
+                    </div>
+                    <div class="bg-graphite p-8 rounded-3xl border border-white/5 space-y-4 group hover:border-aura/30 transition-colors">
+                        <div class="w-14 h-14 bg-aura/10 rounded-2xl flex items-center justify-center text-aura mb-4">
+                            <i data-lucide="cpu" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Smart Equipment</h3>
+                        <p class="text-clay text-sm leading-relaxed">Our machines automatically adjust resistance based on your real-time power output and fatigue levels.</p>
+                    </div>
+                    <div class="bg-graphite p-8 rounded-3xl border border-white/5 space-y-4 group hover:border-aura/30 transition-colors">
+                        <div class="w-14 h-14 bg-aura/10 rounded-2xl flex items-center justify-center text-aura mb-4">
+                            <i data-lucide="users-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Expert Bio-Hackers</h3>
+                        <p class="text-clay text-sm leading-relaxed">Our trainers aren't just lifters; they are performance scientists dedicated to your longevity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promos Section -->
+            <div id="promo-section" class="p-8 space-y-8 bg-graphite/30">
+                <div class="flex justify-between items-end">
+                    <h2 class="text-3xl font-bold uppercase tracking-tighter">Membership<br><span class="text-aura">Tiers</span></h2>
+                    <p class="text-clay text-right text-xs font-bold uppercase tracking-widest pb-1">Limited Availability</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Elite Tier -->
+                    <div class="relative p-8 rounded-3xl bg-carbon border-2 border-aura shadow-[0_0_40px_rgba(255,59,48,0.15)] overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-aura/10 rounded-full blur-3xl"></div>
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <span class="px-2 py-0.5 rounded bg-aura text-carbon text-[10px] font-bold uppercase tracking-wider">Most Popular</span>
+                                <h3 class="text-2xl font-bold mt-2">Elite Bio-Digital</h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-4xl font-black text-aura text-glow">$199</span>
+                                <span class="text-clay">/mo</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> 24/7 Global Club Access</li>
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Monthly DEXA Scan & Bloodwork</li>
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Unlimited Cryo & Sauna</li>
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Private Bio-Analyst Coaching</li>
+                        </ul>
+                        <button class="w-full py-4 bg-aura text-carbon font-bold rounded-2xl active:scale-95 transition-transform">Claim Founding Rate</button>
+                    </div>
+
+                    <!-- Founder Tier -->
+                    <div class="p-8 rounded-3xl bg-graphite border border-white/5">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="text-2xl font-bold">Founder's Basic</h3>
+                            <div class="text-right">
+                                <span class="text-3xl font-black">$149</span>
+                                <span class="text-clay">/mo</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-3 mb-8 opacity-70">
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Standard Club Access</li>
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Quarterly Biometric Check</li>
+                            <li class="flex items-center gap-3 text-sm"><i data-lucide="check" class="w-4 h-4 text-aura"></i> Standard Equipment Sync</li>
+                        </ul>
+                        <button class="w-full py-4 bg-white/5 border border-white/10 text-ice font-bold rounded-2xl active:scale-95 transition-transform">Get Started</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location & Contact (Duplicated/Enhanced) -->
+            <div class="p-8 space-y-8 bg-carbon">
+                <div class="text-center space-y-2">
+                    <h2 class="text-3xl font-bold uppercase tracking-tighter">Visit the <span class="text-aura">HQ</span></h2>
+                    <p class="text-clay">Downtown Cyber District, Neo City</p>
+                </div>
+
+                <div class="rounded-3xl overflow-hidden border border-white/5 h-64 relative mb-6 shadow-2xl">
+                    <!-- Placeholder for Map -->
+                    <div class="absolute inset-0 bg-[#0f172a] flex items-center justify-center p-8">
+                         <div class="w-full h-full border border-aura/20 rounded-2xl flex flex-col items-center justify-center space-y-4 bg-carbon/50">
+                            <i data-lucide="map-pin" class="w-12 h-12 text-aura animate-pulse"></i>
+                            <p class="text-xs text-clay uppercase tracking-widest font-bold">Interactive Navigation Engaged</p>
+                            <p class="text-[10px] text-white/40">88 Tech Plaza, Cyber Valley, Neo City</p>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-aura mb-4">Hours of Operation</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-clay">Mon - Fri</span>
+                                    <span class="font-bold">05:00 - 23:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-clay">Saturday</span>
+                                    <span class="font-bold">07:00 - 21:00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-clay">Sunday</span>
+                                    <span class="font-bold">08:00 - 18:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-widest text-aura mb-4">Contact Protocol</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="phone" class="w-4 h-4 text-aura"></i>
+                                    <span>+1 (555) AURA-FIT</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="mail" class="w-4 h-4 text-aura"></i>
+                                    <span>hello@aurafit.gym</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="p-12 bg-carbon border-t border-white/5 text-center space-y-8">
+                <div class="flex flex-col items-center">
+                    <h2 class="text-3xl font-black tracking-tighter uppercase text-glow mb-2">AuraFit</h2>
+                    <p class="text-clay text-[10px] uppercase tracking-widest italic">The Future of Performance</p>
+                </div>
+                <div class="flex justify-center gap-6 text-clay">
+                    <i data-lucide="instagram" class="w-5 h-5 hover:text-aura cursor-pointer"></i>
+                    <i data-lucide="twitter" class="w-5 h-5 hover:text-aura cursor-pointer"></i>
+                    <i data-lucide="youtube" class="w-5 h-5 hover:text-aura cursor-pointer"></i>
+                </div>
+                <p class="text-[10px] text-clay/50 uppercase tracking-tighter">&copy; 2026 AuraFit Performance Systems. All rights reserved.</p>
+            </footer>
+        </section>
 
         <!-- Dashboard View -->
         <section id="view-dashboard" class="view p-6 space-y-8">
@@ -483,7 +676,13 @@
     <!-- Navigation Bar -->
     <nav id="navbar" class="fixed bottom-0 left-0 right-0 bg-carbon/80 backdrop-blur-xl border-t border-white/5 p-4 hidden">
         <div class="flex justify-around items-center max-w-lg mx-auto">
-            <button class="nav-item group flex flex-col items-center gap-1 active" data-view="dashboard">
+            <button class="nav-item group flex flex-col items-center gap-1 active" data-view="home">
+                <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
+                    <i data-lucide="home" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-tighter text-clay group-[.active]:text-aura">Home</span>
+            </button>
+            <button class="nav-item group flex flex-col items-center gap-1" data-view="dashboard">
                 <div class="nav-icon-bg w-10 h-10 rounded-full flex items-center justify-center group-[.active]:bg-aura/10 transition-colors">
                     <i data-lucide="layout-grid" class="w-5 h-5 text-clay group-[.active]:text-aura"></i>
                 </div>
@@ -516,7 +715,7 @@
         </div>
     </nav>
 
-    <script src="app.js?v=r3d_v2"></script>
+    <script src="app.js?v=aurav3"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
